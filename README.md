@@ -225,4 +225,4 @@ https://youtu.be/PeUEeHX_8Xo?si=YaiZIT_tbwugFAs6
 
 ---
 
-🔊 The video includes audio narration and is under 5 minutes as per the assignment's requirements
+🔊 The video includes audio narration and is under 5 minutes as per the project's requirements
