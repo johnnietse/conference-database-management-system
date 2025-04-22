@@ -1,6 +1,6 @@
 # 🎓 Conference Management System
 
-Welcome to the **Conference Management System** — a web-based tool developed using **PHP**, **HTML**, **CSS**, and **MySQL**, intended for internal use by **conference organizers**. This platform enables administrators to manage attendees, sponsors, job postings, session schedules, and finances efficiently via a clean and structured interface.
+Welcome to the **Conference Management System** — a fully functional PHP-based web application tool developed using **PHP**, **HTML**, **CSS**, **JavaScript**, and **MySQL**, intended for internal use by **conference organizers** for managing a university conference. This tool/platform enables administrators to manage attendees, sponsors, job postings, session schedules, and finances efficiently via a clean and structured interface (focusing on functionality and database-driven interactions over flashy design). The system interfaces with a backend MySQL-compatible database using PHP PDO, ensuring broad DBMS compatibility.
 
 ---
 
@@ -11,9 +11,6 @@ This application is a complete end-to-end system for managing university confere
 Unlike flashy public-facing sites, this organizer-only tool emphasizes clarity and completeness of core conference operations. All data-driven content is rendered dynamically through PHP modules.
 
 ---
-
-
-A fully functional PHP-based web application for managing a university conference. This tool is designed specifically for conference organizers, focusing on functionality and database-driven interactions over flashy design. The system interfaces with a backend MySQL-compatible database using PHP PDO, ensuring broad DBMS compatibility.
 
 
 ## 📁 File Structure
