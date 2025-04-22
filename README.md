@@ -201,3 +201,13 @@ Update connectdb.php as needed for your DB credentials or port.
 
 ![Screenshot (701)](https://github.com/user-attachments/assets/cb9ffbc5-139e-4d85-9870-cf914be2b108)
 ![Screenshot (702)](https://github.com/user-attachments/assets/834d01a5-6cf8-457b-b0b9-1c4ef6aba95f)
+
+
+
+
+## 🎥 Demo Video
+A short walkthrough of the Conference Management System is available below. This demo highlights all core features, including attendee management, sponsorship controls, job postings, and session scheduling.
+
+▶️ Watch the full demo here:
+https://youtu.be/PeUEeHX_8Xo?si=YaiZIT_tbwugFAs6
+🔊 The video includes audio narration and is under 5 minutes as per the assignment's requirements
