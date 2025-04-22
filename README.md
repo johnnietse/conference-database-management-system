@@ -12,6 +12,10 @@ Unlike flashy public-facing sites, this organizer-only tool emphasizes clarity a
 
 ---
 
+
+A fully functional PHP-based web application for managing a university conference. This tool is designed specifically for conference organizers, focusing on functionality and database-driven interactions over flashy design. The system interfaces with a backend MySQL-compatible database using PHP PDO, ensuring broad DBMS compatibility.
+
+
 ## 📁 File Structure
 
 <pre>
