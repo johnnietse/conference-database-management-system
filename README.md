@@ -1,14 +1,29 @@
 # 🎓 Conference Management System
 
-Welcome to the **Conference Management System** — a fully functional PHP-based web application tool developed using **PHP**, **HTML**, **CSS**, **JavaScript**, and **MySQL**, intended for internal use by **conference organizers** for managing a university conference. This tool/platform enables administrators to manage attendees, sponsors, job postings, session schedules, and finances efficiently via a clean and structured interface (focusing on functionality and database-driven interactions over flashy design). The system interfaces with a backend MySQL-compatible database using PHP PDO, ensuring broad DBMS compatibility.
+Welcome to the **Conference Management System** — a fully functional PHP-based web application tool developed as part of a university course project. Built using **PHP**, **HTML**, **CSS**, **JavaScript**, and **MySQL**, this application is intended for internal use by **conference organizers** to streamline the management of a university-level academic conference. This application enables administrators to manage attendees, sponsors, job postings, session schedules, and finances efficiently via a clean and structured interface (focusing on functionality and database-driven interactions over flashy design). The system interfaces with a backend MySQL-compatible database using PHP PDO, ensuring broad DBMS compatibility.
 
 ---
 
 ## 🌐 Project Overview
 
-This application is a complete end-to-end system for managing university conference data. The primary focus is on **functionality, accessibility, and database interaction**, using **PDO (PHP Data Objects)** for robust, secure, and DBMS-agnostic operations.
+This application is a complete end-to-end system for managing university conference data, implemented as a practical assignment for a Computer Science/Engineering course. The primary focus is on **functionality, accessibility, and database interaction**, using **PDO (PHP Data Objects)** for robust, secure, and DBMS-agnostic operations.
 
 Unlike flashy public-facing sites, this organizer-only tool emphasizes clarity and completeness of core conference operations. All data-driven content is rendered dynamically through PHP modules.
+
+
+
+### Key Principles:
+- **Functionality First**: Designed with the primary goal of fulfilling real-world conference management tasks for organizers.
+
+- **Clean Architecture**: Pages are broken down into clear modules (e.g., attendees, sessions, sponsors).
+
+- **Portable & Configurable**: Developed to work on most local or hosted environments with minimal setup.
+
+- **Database Agnostic**: Uses PHP's PDO for all database operations, allowing use with various SQL-based systems.
+
+- **Accessible UI**: Focused on readability, logical flow, and ease of use without requiring frontend frameworks.
+
+The application aims to demonstrate a well-organized and modular approach to building dynamic content with PHP, while enforcing best practices for web application development and relational database design.
 
 ---
 
