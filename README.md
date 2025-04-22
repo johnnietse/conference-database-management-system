@@ -54,7 +54,6 @@ conference_management_system/
 - **Vanilla JavaScript** – For form interactivity (e.g., conditional fields) --> but No JavaScript frameworks — plain JS where necessary
 - **Responsive and clean UI with a professional touch**
 
-
 ---
 
 ## 🚀 Functional Features
@@ -125,9 +124,9 @@ Place it in the appropriate root folder of your local server:
 Run the provided script:
 
 ```sql
--- setup_conferenceDB.sql
+-- conferencedb.sql
 DROP DATABASE IF EXISTS conferenceDB;
-CREATE DATABASE conferenceDB;
+CREATE DATABASE IF NOT EXISTS conferenceDB;
 USE conferenceDB;
 ```
 
@@ -147,7 +146,19 @@ Navigate to: http://localhost:PORT/conference_management_system/conference.php
 ```
 (Replace PORT with your configured port, like 8080 or 3308.)
 
+### Summary on how to run
+Ensure you have:
 
+- PHP (v7+)
+
+- MySQL (or compatible DBMS)
+
+- A local server (e.g., XAMPP/WAMP/MAMP)
+
+Place the project in your htdocs (or equivalent), then visit:
+http://localhost:PORT/conference_management_system/conference.php
+
+Update connectdb.php as needed for your DB credentials or port.
 
 
 
