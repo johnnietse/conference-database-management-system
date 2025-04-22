@@ -141,11 +141,14 @@ $connection = new PDO('mysql:host=localhost;port=3308;dbname=conferenceDB', 'roo
 ```
 
 ### 4. Access the Application
+
+Navigate to:
 ```bash
-Navigate to: http://localhost:PORT/conference_management_system/conference.php
+http://localhost:PORT/conference_management_system/conference.php
 ```
 (Replace PORT with your configured port, like 8080 or 3308.)
 
+---
 ### Summary on how to run
 Ensure you have:
 
@@ -156,11 +159,12 @@ Ensure you have:
 - A local server (e.g., XAMPP/WAMP/MAMP)
 
 Place the project in your htdocs (or equivalent), then visit:
+```bash
 http://localhost:PORT/conference_management_system/conference.php
-
+```
 Update connectdb.php as needed for your DB credentials or port.
 
-
+---
 
 
 
