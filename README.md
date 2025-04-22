@@ -210,5 +210,7 @@ A short walkthrough of the Conference Management System is available below. This
 
 ▶️ Watch the full demo here:
 https://youtu.be/PeUEeHX_8Xo?si=YaiZIT_tbwugFAs6
+
 ---
+
 🔊 The video includes audio narration and is under 5 minutes as per the assignment's requirements
