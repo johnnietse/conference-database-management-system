@@ -127,9 +127,11 @@ Run the provided script:
 DROP DATABASE IF EXISTS conferenceDB;
 CREATE DATABASE conferenceDB;
 USE conferenceDB;
+```
 
 -- Followed by table creation and data inserts...
 You can run this in tools like phpMyAdmin, MySQL CLI, or DBeaver.
+
 
 ### 3. Configure Your Environment
 Ensure the database credentials in connectdb.php match your local setup:
