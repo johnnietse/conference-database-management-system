@@ -57,13 +57,13 @@ conference_management_system/
 
 ---
 
-## 🚀 Features
+## 🚀 Functional Features
 
 The application supports all the following functionalities:
 
 ### 👥 Attendee Management
 
-- Add a new attendee (student, professional, sponsor)
+- Add a new attendee (student, professional, sponsor) ->  Note: (automatically links students to rooms and sponsors to companies)
   - Students are assigned to a hotel room
   - Sponsors are linked to a company
 - View all attendees organized by type:
@@ -73,11 +73,11 @@ The application supports all the following functionalities:
 
 ### 🏨 Hotel Room Viewer
 
-- Select a room from a dropdown to view all students assigned to that room
+- Select a room from a dropdown menu to view all students assigned to that room
 
 ### 🧑‍💼 Sub-Committee Viewer
 
-- Choose a sub-committee and list all its members
+- Choose a sub-committee from a dropdown menu and list all its members
 
 ### 📆 Conference Schedule
 
@@ -93,20 +93,20 @@ The application supports all the following functionalities:
 
 ### 🏢 Sponsor Management
 
-- View all sponsors with their level and number of attendees
+- View all sponsoring companies with their sponsorship level and number of attendees to the conference
 - Add a new sponsor company
-- Delete an existing company (and cascade delete attendees from that sponsor)
+- Delete an existing company (and cascade delete attendees from that sponsor's company)
 
 ### 💰 Financial Report
 
 - Display total revenue breakdown:
   - From registration fees
   - From sponsorship contributions
-- Summarized in clearly formatted tables
+- Summarized in clearly formatted tables 
 
-### 🔁 Session Editing
+### 🔁 Session Editing/Updates
 
-- Switch a session’s:
+- Change and switch a session’s:
   - Day
   - Time
   - Location
