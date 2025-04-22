@@ -14,6 +14,7 @@ Unlike flashy public-facing sites, this organizer-only tool emphasizes clarity a
 
 ## 📁 File Structure
 
+<pre></pre>
 conference_management_system/
 ├── conference.php              # Home page / main menu
 ├── conferencedb.sql
@@ -38,14 +39,9 @@ conference_management_system/
 │   └── sub_committee_members.php
 └── images/
     └── conferencelogo.png      # Conference logo 
-
-
-
-<pre> 
-    ```bash 
-    ## 📁 File Structure conference_management_system/ ├── conference.php # Home page / main menu ├── conferencedb.sql ├── connectdb.php # Database connection (PDO) ├── getdata.php # Ignore this file ├── includes/ │ ├── header.php # Common header (styles, nav) │ ├── footer.php # Common footer │ ├── styles.css # Styling │ └── helper_functions.php # Reusable formatting functions ├── modules/ # All feature modules (dynamic content) │ ├── add_new_attendee.php │ ├── all_available_jobs.php │ ├── company_jobs.php │ ├── conference_daily_schedule.php │ ├── conference_financials.php │ ├── hotel_rooming.php │ ├── list_of_attendees.php │ ├── list_of_sponsors.php │ ├── session_details_management.php │ ├── sponsorship_companies_management.php │ └── sub_committee_members.php └── images/ └── conferencelogo.png # Conference logo 
-    ``` 
 </pre>
+
+
 
 ---
 
