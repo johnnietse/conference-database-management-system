@@ -1,3 +1,152 @@
+# 🎓 Conference Management System
+
+Welcome to the **Conference Management System** — a web-based tool developed using **PHP**, **HTML**, **CSS**, and **MySQL**, intended for internal use by **conference organizers**. This platform enables administrators to manage attendees, sponsors, job postings, session schedules, and finances efficiently via a clean and structured interface.
+
+---
+
+## 🌐 Project Overview
+
+This application is a complete end-to-end system for managing university conference data. The primary focus is on **functionality, accessibility, and database interaction**, using **PDO (PHP Data Objects)** for robust, secure, and DBMS-agnostic operations.
+
+Unlike flashy public-facing sites, this organizer-only tool emphasizes clarity and completeness of core conference operations. All data-driven content is rendered dynamically through PHP modules.
+
+---
+
+## 📁 File Structure
+
+conference_management_system/
+├── conference.php              # Home page / main menu
+├── conferencedb.sql
+├── connectdb.php               # Database connection (PDO)
+├── getdata.php                 # Ignore this file
+├── includes/
+│   ├── header.php              # Common header (styles, nav)
+│   ├── footer.php              # Common footer
+│   ├── styles.css              # Styling
+│   └── helper_functions.php    # Reusable formatting functions
+├── modules/                    # All feature modules (dynamic content)
+│   ├── add_new_attendee.php
+│   ├── all_available_jobs.php
+│   ├── company_jobs.php
+│   ├── conference_daily_schedule.php
+│   ├── conference_financials.php
+│   ├── hotel_rooming.php
+│   ├── list_of_attendees.php
+│   ├── list_of_sponsors.php
+│   ├── session_details_management.php
+│   ├── sponsorship_companies_management.php
+│   └── sub_committee_members.php
+└── images/
+    └── conferencelogo.png      # Conference logo 
+
+
+
+---
+
+## ⚙️ Technologies Used
+
+- **PHP 7+** – Backend logic and dynamic content generation
+- **PDO (PHP Data Objects)** – Secure, DBMS-independent database interaction
+- **MySQL (or compatible DBMS)** – Data storage and querying
+- **HTML5/CSS3** – Structure and styling
+- **Vanilla JavaScript** – Form interactivity (e.g., conditional fields)
+
+---
+
+## 🚀 Features
+
+The application supports all the following functionalities:
+
+### 👥 Attendee Management
+
+- Add a new attendee (student, professional, sponsor)
+  - Students are assigned to a hotel room
+  - Sponsors are linked to a company
+- View all attendees organized by type:
+  - Students
+  - Professionals
+  - Sponsors
+
+### 🏨 Hotel Room Viewer
+
+- Select a room from a dropdown to view all students assigned to that room
+
+### 🧑‍💼 Sub-Committee Viewer
+
+- Choose a sub-committee and list all its members
+
+### 📆 Conference Schedule
+
+- Select a day to view all scheduled sessions with:
+  - Time
+  - Location
+  - Speaker details
+
+### 💼 Job Postings
+
+- View all available jobs sorted by sponsorship level and salary
+- Filter job listings by sponsoring company
+
+### 🏢 Sponsor Management
+
+- View all sponsors with their level and number of attendees
+- Add a new sponsor company
+- Delete an existing company (and cascade delete attendees from that sponsor)
+
+### 💰 Financial Report
+
+- Display total revenue breakdown:
+  - From registration fees
+  - From sponsorship contributions
+- Summarized in clearly formatted tables
+
+### 🔁 Session Editing
+
+- Switch a session’s:
+  - Day
+  - Time
+  - Location
+- Ensure no time/location conflicts
+
+---
+
+## 🧪 How to Run
+
+### 1. Clone or Download the Repository
+Place it in the appropriate root folder of your local server:
+- **XAMPP:** `htdocs/`
+- **WAMP:** `www/`
+
+### 2. Create & Load the Database
+Run the provided script:
+
+```sql
+-- setup_conferenceDB.sql
+DROP DATABASE IF EXISTS conferenceDB;
+CREATE DATABASE conferenceDB;
+USE conferenceDB;
+
+-- Followed by table creation and data inserts...
+You can run this in tools like phpMyAdmin, MySQL CLI, or DBeaver.
+
+### 3. Configure Your Environment
+Ensure the database credentials in connectdb.php match your local setup:
+```php
+$connection = new PDO('mysql:host=localhost;port=3308;dbname=conferenceDB', 'root', '');
+```
+
+### 4. Access the Application
+```bash
+Navigate to: http://localhost:PORT/conference_management_system/conference.php
+```
+(Replace PORT with your configured port, like 8080 or 3308.)
+
+
+
+
+
+
+
 ![Conference](https://github.com/user-attachments/assets/cf1a1832-8c8d-4175-97d5-4990d06b2979)
 
 
