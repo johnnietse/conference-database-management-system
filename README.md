@@ -14,7 +14,7 @@ Unlike flashy public-facing sites, this organizer-only tool emphasizes clarity a
 
 ## 📁 File Structure
 
-<pre></pre>
+<pre>
 conference_management_system/
 ├── conference.php              # Home page / main menu
 ├── conferencedb.sql
