@@ -45,13 +45,15 @@ conference_management_system/
 
 ---
 
-## ⚙️ Technologies Used
+## 🧰 Tech Stack
 
-- **PHP 7+** – Backend logic and dynamic content generation
+- **PHP 7+** – Backend logic and dynamic content generation (with PDO for database access)
 - **PDO (PHP Data Objects)** – Secure, DBMS-independent database interaction
-- **MySQL (or compatible DBMS)** – Data storage and querying
+- **MySQL (or compatible DBMS)** – Data storage and querying (via conferenceDB)
 - **HTML5/CSS3** – Structure and styling
-- **Vanilla JavaScript** – Form interactivity (e.g., conditional fields)
+- **Vanilla JavaScript** – For form interactivity (e.g., conditional fields) --> but No JavaScript frameworks — plain JS where necessary
+- **Responsive and clean UI with a professional touch**
+
 
 ---
 
