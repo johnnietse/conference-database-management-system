@@ -292,6 +292,11 @@ Model the **Conference Database** to encapsulate entities, relationships, and co
 - ER diagram in `.jpg` format, validated against project requirements.  
 - Assumptions documented (e.g., "Sponsors are not automatically attendees").  
 
+### ER Diagram
+
+[ER Diagram (Project Part 1) - Corrected, modified version (3).pdf](https://github.com/user-attachments/files/19880344/ER.Diagram.Project.Part.1.-.Corrected.modified.version.3.pdf)
+
+
 ---
 
 ## **Phase 3: Relational Model & SQL Script Implementation**  
@@ -300,7 +305,272 @@ Translate the ER diagram into a normalized SQL schema and populate it with test 
     
 ### **Outcome**  
 - SQL script (`conferenceDB.sql`) capable of recreating the database from scratch.  
-- Test data ensuring all relationships and constraints functioned as intended.  
+- Test data ensuring all relationships and constraints functioned as intended.
+
+### SQL Script
+
+```sql
+drop database if exists conferenceDB;
+create database if not exists conferenceDB;
+use conferenceDB;
+
+create table attendee(
+    id integer not null primary key,
+    fName varchar(40),
+    lName varchar(40),
+    fee Enum("0", "50", "100"));
+
+create table room (
+    num integer not null primary key,
+    numbed integer);
+
+create table student(
+    id integer not null primary key,
+    roomNum integer not null,
+    foreign key (id) references attendee (id) on delete cascade,
+    foreign key (roomNum) references room(num));
+
+create table professional(
+    id integer not null primary key,
+    foreign key (id) references attendee (id) on delete cascade);
+
+
+create table speaker(
+    id integer not null primary key,
+    foreign key (id) references attendee (id) on delete cascade);
+
+create table session(
+    location integer not null,
+    sessionDate date not null,
+    startTime time not null,
+    endTime time not null,
+    speakerID integer not null,
+    primary key(location, sessionDate, startTime),
+    foreign key (speakerID) references speaker (id) on delete cascade);
+
+create table company(
+    name varchar(120) not null primary key,
+    emailsSent integer,
+    level Enum("Gold", "Bronze", "Platinum", "Silver"));
+
+create table sponsor(
+    id integer not null primary key,
+    companyName varchar(120) not null,
+    foreign key (id) references attendee (id) on delete cascade,
+    foreign key (companyName) references company (name) on delete cascade);
+
+create table jobAd(
+    companyName varchar(120) not null,
+    jobTitle varchar(250) not null,
+    salary integer,
+    location varchar(250),
+    primary key (companyName, jobTitle),
+    foreign key (companyName) references company (name) on delete cascade);
+
+
+create table member(
+    id integer not null primary key,
+    fName varchar(120) not null,
+    lName varchar(120) not null);
+
+
+create table subcommittee(
+    name varchar(120) not null primary key,
+    chairID integer not null,
+    foreign key (chairID) references member (id));
+
+create table memberOf(
+    id integer not null,
+    subcommittee varchar(120) not null,
+    foreign key (id) references member (id),
+    foreign key (subcommittee) references subcommittee (name));
+
+    
+
+
+insert into attendee values
+(1, 'Alice', 'King', '100'),
+(2, 'Bob', 'Smith', '50'),
+(3, 'Charlie', 'Williams', '0'),
+(4, 'David', 'Lee', '100'),
+(5, 'Eve', 'Brown', '50'),
+(6, 'Frank', 'Davis', '0'),
+(7, 'Grace', 'Miller', '100'),
+(8, 'Hannah', 'Taylor', '50'),
+(9, 'Olivia', 'Young', '0'),
+(10, 'Lisa', 'Green', '50'),
+(11, 'Kara', 'Thomas', '100'),
+(12, 'Kelly', 'Kang', '0'),
+(13, 'Douglas', 'Lopez', '50'),
+(14, 'Noah', 'Green', '0'),
+(15, 'Olivia', 'Hill', '100'),
+(16, 'Paul', 'Adams', '50'),
+(17, 'Quinn', 'Baker', '0'),
+(18, 'Rachel', 'Carter', '100'),
+(19, 'Samuel', 'Dave', '50'),
+(20, 'Tom', 'Hall', '0'),
+(21, 'Umi', 'Blake', '50'),
+(22, 'Vanessa', 'Scott', '100'),
+(23, 'Wendy', 'Masse', '0'),
+(24, 'Xavier', 'Iris', '100');  
+
+
+insert into room values
+(101, 2),
+(102, 3),
+(103, 2),
+(104, 1),
+(105, 2),
+(106, 3),
+(107, 1),
+(108, 2),
+(109, 3);  
+
+
+
+
+insert into student values
+(1, 101),
+(2, 101),
+(3, 102),
+(7, 102),
+(8, 103),
+(9, 103),
+(13, 104),
+(14, 105),
+(16, 105),
+(17, 106),
+(19, 107),
+(20, 106),
+(21, 108),
+(23, 109);  
+
+
+
+insert into professional values
+(4),
+(5),
+(10),
+(12),
+(15),
+(18),
+(22),
+(24);
+
+
+insert into speaker values
+(8),
+(13),
+(16),
+(19),
+(23);
+
+
+
+
+insert into session values
+(201, '2025-05-01', '10:30:00', '12:30:00', 8),
+(202, '2025-05-01', '12:00:00', '15:30:00', 8),
+(203, '2025-05-02', '09:30:00', '11:30:00', 8),
+(204, '2025-05-02', '13:00:00', '14:30:00', 13),
+(205, '2025-05-01', '14:30:00', '17:30:00', 16),
+(206, '2025-05-01', '17:00:00', '18:30:00', 19),
+(207, '2025-05-02', '14:30:00', '16:30:00', 23),
+(208, '2025-05-02', '16:30:00', '18:00:00', 16);
+
+
+insert into company values
+('Thompson LLC', 10, 'Gold'),
+('Hammes, Littel and Schultz', 5, 'Silver'),
+('Brekke LLC', 8, 'Platinum'),
+('Donnelly Group', 3, 'Bronze'),
+('Gibson LLC', 15, 'Gold'),
+('Crist', 7, 'Gold'),
+('Cloud AI', 4, 'Silver'),
+('Wunsch', 12, 'Platinum'),
+('EffertzCode', 0, 'Bronze'),
+('AI Welch', 9, 'Gold');
+
+
+
+insert into sponsor values
+(4, 'Thompson LLC'),
+(5, 'Hammes, Littel and Schultz'),
+(10, 'Donnelly Group'),
+(11, 'Gibson LLC'),
+(13, 'Crist'),
+(14, 'Cloud AI'),
+(16, 'EffertzCode'),
+(19, 'AI Welch');
+
+
+insert into jobAd values
+('Thompson LLC', 'Frontend Developer', 95000, 'Surrey'),
+('Thompson LLC', 'ML Data Analyst', 80000, 'Halifax'),
+('Brekke LLC', 'Product Designer', 75000, 'Seattle'),
+('Hammes, Littel and Schultz', 'DevOps Engineer', 100000, 'New York City'),
+('Donnelly Group', 'UI/UX Developer', 50000, 'Calgary'),
+('Gibson LLC', 'AI Researcher', 625000, 'South Boston'),
+('Crist', 'Backend Developer', 85000, 'Vancouver'),
+('Cloud AI', 'Cloud Architect', 140000, 'Galena'),
+('Wunsch', 'ML Engineer', 135000, 'San Francisco'),
+('EffertzCode', 'Network Engineer', 65000, 'Toronto'),
+('AI Welch', 'Software Developer', 90000, 'Dallas');
+
+
+
+insert into member values
+(1, 'Grace', 'Hoppi'),
+(2, 'Alan', 'Turing'),
+(3, 'Aidea', 'Lovlace'),
+(4, 'Tim', 'Bay-Lee'),
+(5, 'Marget', 'Hamilton'),
+(6, 'Denny', 'Richie'),
+(7, 'Barba', 'Niskovy'),
+(8, 'Kenny', 'Thompson'),
+(9, 'Brien', 'Kitchenville'),
+(10, 'Linux', 'Toaldrus'),
+(11, 'John', 'Backingham'),
+(12, 'Franci', 'Allan');
+
+
+insert into subcommittee values
+('Event Planning and Logistics', 1),
+('Finance', 2),
+('Sponsorship', 3),
+('Program', 4),
+('IT Support and Web Development', 5),
+('Marketing', 6),
+('Registration', 7),
+('Art Design', 8),
+('Operations', 9);
+
+
+insert into memberOf values
+(1, 'Event Planning and Logistics'),
+(2, 'Finance'),
+(3, 'Sponsorship'),
+(4, 'IT Support and Web Development'),
+(3, 'Program'),
+(3, 'Marketing'),
+(4, 'Finance'),
+(5, 'Registration'),
+(5, 'Event Planning and Logistics'),
+(6, 'Finance'),
+(7, 'Marketing'),
+(2, 'Sponsorship'),
+(6, 'Art Design'),
+(7, 'IT Support and Web Development'),
+(8, 'IT Support and Web Development'),
+(9, 'Operations'),
+(9, 'Registration'),
+(10, 'Marketing'),
+(11, 'Art Design'),
+(11, 'IT Support and Web Development'),
+(12, 'Operations');
+
+```
+
 
 ---
 
