@@ -294,8 +294,7 @@ Model the **Conference Database** to encapsulate entities, relationships, and co
 
 ### ER Diagram
 
-[ER Diagram (Project Part 1) - Corrected, modified version (3).pdf](https://github.com/user-attachments/files/19880344/ER.Diagram.Project.Part.1.-.Corrected.modified.version.3.pdf)
-
+[ER Diagram (Project Part 1) - Corrected, modified version.pdf](https://github.com/user-attachments/files/19880506/ER.Diagram.Project.Part.1.-.Corrected.modified.version.pdf)
 
 ---
 
