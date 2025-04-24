@@ -288,38 +288,6 @@ Establish a foundational environment for database management and web development
 ### **Objective**  
 Model the **Conference Database** to encapsulate entities, relationships, and constraints based on real-world requirements.  
 
-### **Core Entities & Relationships**  
-1. **Entities**:  
-   - **Committees**: Sub-committees (e.g., "Program Committee") with attributes: `committee_id`, `name`, `chair_id`.  
-   - **Attendees**: Categorized into subtypes:  
-     - **Students**: Linked to `room_number` and `hotel_id`.  
-     - **Professionals**: Tracked registration fees.  
-     - **Sponsors**: Associated with a `company_id`.  
-   - **SponsorCompanies**: Attributes included `tier` (Platinum/Gold/Silver/Bronze) and `email_quota`.  
-
-2. **Relationships**:  
-   - **1:1**: Each committee has one `chair` (a committee member).  
-   - **1:N**: SponsorCompanies to SponsorAttendees (one company, multiple representatives).  
-   - **N:M**: Students to Rooms via associative entity `RoomAssignment`.  
-
-3. **Constraints**:  
-   - **Participation**: All students *may* have a room (partial participation).  
-   - **Cardinality**: Sessions have *at least one* speaker (mandatory participation).  
-
-### **Design Decisions**  
-- **Weak Entities**:  
-  - **Rooms**: Dependent on `Hotel` entity; composite primary key (`room_number`, `hotel_id`).  
-- **Generalization/Specialization**:  
-  - **Attendee** supertype with subtypes `Student`, `Professional`, `Sponsor` to reduce redundancy.  
-
-### **Challenges & Solutions**  
-- **Overlapping Roles**:  
-  - **Issue**: A speaker could also be an attendee.  
-  - **Resolution**: Created separate `Speaker` entity linked to `Attendee` via foreign key.  
-- **Composite Attributes**:  
-  - **Issue**: Addresses (city, province) for jobs.  
-  - **Resolution**: Stored as atomic attributes in `Job` entity.  
-
 ### **Outcome**  
 - ER diagram in `.jpg` format, validated against project requirements.  
 - Assumptions documented (e.g., "Sponsors are not automatically attendees").  
@@ -329,66 +297,7 @@ Model the **Conference Database** to encapsulate entities, relationships, and co
 ## **Phase 3: Relational Model & SQL Script Implementation**  
 ### **Objective**  
 Translate the ER diagram into a normalized SQL schema and populate it with test data.  
-
-### **Schema Design**  
-1. **Table Creation**:  
-   - **Committees**:  
-     ```sql  
-     CREATE TABLE Committees (  
-       committee_id INT PRIMARY KEY AUTO_INCREMENT,  
-       name VARCHAR(50) NOT NULL,  
-       chair_id INT NOT NULL,  
-       FOREIGN KEY (chair_id) REFERENCES Members(member_id)  
-     );  
-     ```  
-   - **Rooms (Weak Entity)**:  
-     ```sql  
-     CREATE TABLE Rooms (  
-       room_number INT,  
-       hotel_id INT,  
-       beds INT NOT NULL CHECK (beds IN (1, 2)),  
-       PRIMARY KEY (room_number, hotel_id),  
-       FOREIGN KEY (hotel_id) REFERENCES Hotels(hotel_id)  
-     );  
-     ```  
-
-2. **Subtype Handling**:  
-   - **Single Table Inheritance**:  
-     ```sql  
-     CREATE TABLE Attendees (  
-       attendee_id INT PRIMARY KEY,  
-       type ENUM('student', 'professional', 'sponsor') NOT NULL,  
-       registration_fee DECIMAL(10,2),  
-       -- Student-specific  
-       room_number INT,  
-       hotel_id INT,  
-       -- Sponsor-specific  
-       company_id INT,  
-       FOREIGN KEY (room_number, hotel_id) REFERENCES Rooms(room_number, hotel_id),  
-       FOREIGN KEY (company_id) REFERENCES SponsorCompanies(company_id)  
-     );  
-     ```  
-
-### **Data Population**  
-- Inserted **8–10 records per table** for testing:  
-  - **SponsorCompanies**:  
-    ```sql  
-    INSERT INTO SponsorCompanies (company_name, tier)  
-    VALUES ('Tech Corp', 'Platinum'), ('Design Studio', 'Gold');  
-    ```  
-  - **Rooms**:  
-    ```sql  
-    INSERT INTO Rooms (room_number, hotel_id, beds)  
-    VALUES (101, 1, 2), (205, 1, 1);  
-    ```  
-
-### **Challenges & Solutions**  
-- **Referential Integrity**:  
-  - **Issue**: Circular dependencies between `Committees` and `Members`.  
-  - **Resolution**: Temporarily disabled foreign key checks during initial inserts.  
-- **Data Validation**:  
-  - **Triggers**: Enforced email quotas based on sponsorship tier using `BEFORE UPDATE` triggers.  
-
+    
 ### **Outcome**  
 - SQL script (`conferenceDB.sql`) capable of recreating the database from scratch.  
 - Test data ensuring all relationships and constraints functioned as intended.  
@@ -399,69 +308,13 @@ Translate the ER diagram into a normalized SQL schema and populate it with test 
 ### **Objective**  
 Build a dynamic, database-driven web interface for conference organizers.  
 
-### **Tech Stack**  
-- **Frontend**: HTML5, CSS3 (Bootstrap for styling), vanilla JavaScript.  
-- **Backend**: PHP 8.1 with PDO for MySQL connectivity.  
-- **Database**: MySQL 8.0 hosted locally via XAMPP.  
-
-### **Core Features**  
-1. **Committee Management**:  
-   - **Dropdown Lists**: Dynamically populated committees from the database.  
-   - **Chair Assignment**: Form to update a committee’s chair via `UPDATE` queries.  
-
-2. **Room Assignments**:  
-   - **Search Interface**: Filter rooms by hotel or bed count.  
-   - **Student List**: Displayed via `JOIN` between `Attendees` and `Rooms`.  
-
-3. **Sponsorship Dashboard**:  
-   - **Tier-Based Styling**: Platinum sponsors highlighted in blue, Gold in yellow.  
-   - **Email Tracking**: Progress bars showing `emails_sent` vs. `email_quota`.  
-
-4. **Session Scheduling**:  
-   - **Conflict Detection**: Prevented double-booking rooms using `UNIQUE` constraints on `room` and `time_slot`.  
-
-### **Security & Validation**  
-1. **Input Sanitization**:  
-   - **Prepared Statements**:  
-     ```php  
-     $stmt = $pdo->prepare("INSERT INTO Attendees (name, type) VALUES (?, ?)");  
-     $stmt->execute([$_POST['name'], $_POST['type']]);  
-     ```  
-2. **Session Management**:  
-   - **Authentication**:  
-     ```php  
-     session_start();  
-     if (!isset($_SESSION['user_id'])) {  
-       header("Location: /login.php");  
-       exit();  
-     }  
-     ```  
-
-### **Challenges & Solutions**  
-- **Dynamic Query Building**:  
-  - **Issue**: Flexible search filters for sessions (date, room, speaker).  
-  - **Resolution**: Constructed SQL queries with optional `WHERE` clauses using parameter binding.  
-- **File Organization**:  
-  - **Issue**: Scalability with growing features.  
-  - **Resolution**: Adopted MVC-like structure:  
-    ```  
-    /models   → Database operations  
-    /views    → HTML templates  
-    /controllers → Form handlers  
-    ```  
-
 ### **Outcome**  
 - **Web Application**:  
   - Multi-page interface with CRUD operations for all entities.  
-  - Responsive design via Bootstrap for mobile compatibility.  
 - **Demo Video**:  
   - 5-minute walkthrough showing feature demonstrations and database interactions.  
 
----
-
-## **Course Learning Outcomes (CLOs)**  
-- **CLO1**: Mastered database design via ER modeling and normalization.  
-- **CLO4**: Developed secure, full-stack applications integrating PHP, MySQL, and modern web standards.  
+ ---
 
 This structured approach ensured rigorous testing at each phase, alignment with academic objectives, and delivery of a functional, scalable application.  
 
