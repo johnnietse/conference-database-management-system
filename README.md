@@ -261,13 +261,13 @@ Establish a foundational environment for database management and web development
 
 3. **Web Server Validation**:  
    - Tested Apache by hosting a static `index.html` page in `htdocs`:  
-     ```html  
-     <!DOCTYPE html>  
-     <html>  
+   ```html  
+   <!DOCTYPE html>  
+   <html>  
        <head><title>Test</title></head>  
        <body><h1>Apache is running!</h1></body>  
-     </html>  
-     ```  
+   </html>  
+   ```  
    - Verified accessibility via `http://localhost` and resolved port conflicts by modifying `httpd.conf` (e.g., switching from port `80` to `8080`).  
 
 ### **Challenges & Solutions**  
