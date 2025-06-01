@@ -250,14 +250,14 @@ Establish a foundational environment for database management and web development
 
 2. **Database Initialization**:  
    - Created `cisc332` database via phpMyAdmin’s SQL console:  
-     ```sql  
-     CREATE DATABASE cisc332;  
-     ```  
+   ```sql  
+   CREATE DATABASE cisc332;  
+   ```  
    - Configured a dedicated MySQL user with restricted privileges for enhanced security:  
-     ```sql  
-     CREATE USER 'app_user'@'localhost' IDENTIFIED BY 'SecurePass123!';  
-     GRANT SELECT, INSERT, UPDATE ON cisc332.* TO 'app_user'@'localhost';  
-     ```  
+   ```sql  
+   CREATE USER 'app_user'@'localhost' IDENTIFIED BY 'SecurePass123!';  
+   GRANT SELECT, INSERT, UPDATE ON cisc332.* TO 'app_user'@'localhost';  
+   ```  
 
 3. **Web Server Validation**:  
    - Tested Apache by hosting a static `index.html` page in `htdocs`:  
