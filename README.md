@@ -56,8 +56,6 @@ conference_management_system/
 ├── conferencedb.sql
 ├── connectdb.php               # Database connection (PDO)
 └── getdata.php                 # Ignore this file
- 
-    
 </pre>
 
 
