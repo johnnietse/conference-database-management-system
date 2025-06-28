@@ -32,15 +32,13 @@ The application aims to demonstrate a well-organized and modular approach to bui
 
 <pre>
 conference_management_system/
-├── conference.php              # Home page / main menu
-├── conferencedb.sql
-├── connectdb.php               # Database connection (PDO)
-├── getdata.php                 # Ignore this file
+├── images/
+│   └── conferencelogo.png      # Conference logo 
 ├── includes/
-│   ├── header.php              # Common header (styles, nav)
 │   ├── footer.php              # Common footer
-│   ├── styles.css              # Styling
-│   └── helper_functions.php    # Reusable formatting functions
+│   ├── header.php              # Common header (styles, nav)
+│   ├── helper_functions.php    # Reusable formatting functions          
+│   └── styles.css              # Styling 
 ├── modules/                    # All feature modules (dynamic content)
 │   ├── add_new_attendee.php
 │   ├── all_available_jobs.php
@@ -53,8 +51,13 @@ conference_management_system/
 │   ├── session_details_management.php
 │   ├── sponsorship_companies_management.php
 │   └── sub_committee_members.php
-└── images/
-    └── conferencelogo.png      # Conference logo 
+├── README.md    
+├── conference.php              # Home page / main menu
+├── conferencedb.sql
+├── connectdb.php               # Database connection (PDO)
+└── getdata.php                 # Ignore this file
+ 
+    
 </pre>
 
 
